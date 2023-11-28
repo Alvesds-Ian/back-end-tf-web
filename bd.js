@@ -14,4 +14,12 @@ async function selectMembros() {
   return res.rows;
 }
 
-export { selectMembros };
+async function selectMembro(email) {
+    const client = await connect();
+    const query = "SELECT * FROM membro WHERE email = $1";
+    const membro = [email];
+    const res = await client.query(query, membro);
+    return res.rows;
+  }
+
+export { selectMembros, selectMembro };

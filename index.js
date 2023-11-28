@@ -1,7 +1,7 @@
 //index.js
 import dotenv from "dotenv";
 import express from "express";
-import { selectMembros } from "./bd.js";
+import { selectMembro, selectMembros } from "./bd.js";
 
 dotenv.config();
 
@@ -23,6 +23,17 @@ app.get("/membros", async (req, res) => {
   } catch (error) {
     res.status(error.status || 500).json({ message: error.message || "Erro!" });
   }
+
+app.get("/membro/:email", async (req, res) => {
+    console.log("Rota GET /membro solicitada");
+    try {
+      const membro = await selectMembro(req.params.email);
+      if (membro.length > 0) res.json(membro);
+      else res.status(404).json({ message: "Membro não encontrado!" });
+    } catch (error) {
+      res.status(error.status || 500).json({ message: error.message || "Erro!" });
+    }
+});
 
   console.log("Rota GET/membros solicitada");
 });
