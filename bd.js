@@ -22,4 +22,11 @@ async function selectMembro(email) {
     return res.rows;
   }
 
-export { selectMembros, selectMembro };
+async function insertMembro(data) {
+  const client = await connect();
+  const query = "INSERT INTO membro (nome,senha,email,cargo,funcao) VALUES ($1,$2,$3,$4,$5) ";
+  const membro = [data.nome, data.senha, data.email, data.cargo, data.funcao];
+  await client.query(query, membro);
+}
+
+export { selectMembros, selectMembro, insertMembro };

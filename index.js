@@ -1,7 +1,7 @@
 //index.js
 import dotenv from "dotenv";
 import express from "express";
-import { selectMembro, selectMembros } from "./bd.js";
+import { selectMembro, selectMembros, insertMembro } from "./bd.js";
 
 dotenv.config();
 
@@ -35,10 +35,23 @@ app.get("/membro/:email", async (req, res) => {
     }
 });
 
+app.post("/membro", async (req, res) => {
+  console.log("Rota POST /membro solicitada");
+  try {
+    await insertMembro(req.body);
+    res.status(201).json({ message: "Membro inserido com sucesso!" });
+  } catch (error) {
+    res.status(error.status || 500).json({ message: error.message || "Erro!" });
+  }
+});
+
   console.log("Rota GET/membros solicitada");
 });
+
+app.use(express.json());
 
 app.listen(port, () => {
   // Um socket para "escutar" as requisições
   console.log(`Serviço escutando na porta:  ${port}`);
 });
+
