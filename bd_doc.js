@@ -14,10 +14,10 @@ async function selectDocumentos() {
   return res.rows;
 }
 
-async function selectDocumento(id) {
+async function selectDocumento(id) { //selectDocumento e deleteDocumento não funcionam (Membro não encontrado)
     const client = await connect();
     const query = "SELECT * FROM documento WHERE id = $1";
-    const documento = [id];
+    const documento = id;
     const res = await client.query(query, documento);
     return res.rows;
   }
@@ -29,10 +29,10 @@ async function insertDocumento(data) {
   await client.query(query, documento);
 }
 
-async function deleteDocumento(id) { 
+async function deleteDocumento(id) { //selectDocumento e deleteDocumento não funcionam (Membro não encontrado)
   const client = await connect();
   const query = "DELETE FROM documento WHERE id = $1";
-  await client.query(query, [id]);
+  await client.query(query, id);
 }
 
 async function updateDocumento(data) {

@@ -94,7 +94,7 @@ app.get("/documentos", async (req, res) => {
   }
   });
 
-app.get("/documento/:id", async (req, res) => {
+app.get("/documento/:id", async (req, res) => {  //selectDocumento e deleteDocumento não funcionam (Membro não encontrado)
     console.log("Rota GET /documento solicitada");
     try {
       const documento = await selectDocumento(req.params.id);
@@ -115,7 +115,7 @@ app.post("/documento", async (req, res) => {
   }
 });
 
-app.delete("/documento/:id", async (req, res) => { 
+app.delete("/documento/:id", async (req, res) => { //selectDocumento e deleteDocumento não funcionam (Membro não encontrado)
   console.log("Rota DELETE /documento solicitada");
   try {
     const documento = await selectDocumento(req.params.id);
