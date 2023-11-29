@@ -27,7 +27,7 @@ app.get("/membros", async (req, res) => {
   }
   });
 
-app.get("/documento/:email", async (req, res) => {
+app.get("/membro/:email", async (req, res) => {
     console.log("Rota GET /membro solicitada");
     try {
       const membro = await selectMembro(req.params.email);
@@ -48,7 +48,7 @@ app.post("/membro", async (req, res) => {
   }
 });
 
-app.delete("/documento/:email", async (req, res) => { 
+app.delete("/membro/:email", async (req, res) => { 
   console.log("Rota DELETE /membro solicitada");
   try {
     const membro = await selectMembro(req.params.email);
@@ -82,7 +82,7 @@ app.put("/membro", async (req, res) => { //updateMembro não tá funcionando
 Endpoints para a tabela Documento
 */
 
-import { selectDocumentos, selectDocumento, insertDocumento, deleteDocumento, updateDocumento } from "./bd_doc.js";
+import { selectDocumentos, selectDocumento, insertDocumento, deleteDocumento, updateDocumento } from "./bd.js";
 
 app.get("/documentos", async (req, res) => {
   console.log("Rota GET/documentos solicitada");
@@ -94,7 +94,7 @@ app.get("/documentos", async (req, res) => {
   }
   });
 
-app.get("/documento/:id", async (req, res) => {  //selectDocumento e deleteDocumento não funcionam (Membro não encontrado)
+app.get("/documento/:id", async (req, res) => {  //selectDocumento aparece erro "Query values must be an array"
     console.log("Rota GET /documento solicitada");
     try {
       const documento = await selectDocumento(req.params.id);
