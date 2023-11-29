@@ -1,7 +1,18 @@
 # back-end-teste
+# Autores
+- Cristian Afonso 
+- Eurico Santiago Climaco Rodrigues 
+- Ian Alves 
+- Pedro Gabriel
+- Pedro Henrique 
+- Samuel Juneo 
+
+# Modelo Conceitual
+<img src="/bd/Gremio-BD.png">
+
 # Documentação dos Endpoints do Projeto
 
-## Tabela Membros
+## Tabela Membro
 
 ### Cadastrar Novo Membro
 
@@ -18,6 +29,7 @@
   "senha": "***",
   "email": "email-usuario@email.com"
 }
+```
 
 ### Listar todos os membros
 
@@ -45,7 +57,26 @@
 
 ### Atualizar Membro
 
-**Descrição:** Insere um novo membro do grêmio no banco de dados.
+**Descrição:** Atualiza informações de um membro do grêmio já existente no banco de dados.
+
+**Endpoint:** `sua-url.vercel.app/user`
+
+**Tipo da Requisição:** `PUT`
+
+**Body:**
+```json
+{
+  "nome": "Nome do usuário",
+  "senha": "***",
+  "email": "email-usuario@email.com"
+}
+```
+
+## Tabela Documento
+
+### Cadastrar Novo Documento
+
+**Descrição:** Insere um novo documento no banco de dados.
 
 **Endpoint:** `sua-url.vercel.app/user`
 
@@ -58,4 +89,47 @@
   "senha": "***",
   "email": "email-usuario@email.com"
 }
+```
+
+### Listar todos os documentos
+
+**Descrição:** Lista todos os documentos presentes no banco de dados.
+
+**Endpoint:** `sua-url.vercel.app/user`
+
+**Tipo da Requisição:** `GET`
+
+### Listar um único documento
+
+**Descrição:** Lista um documento específico com base em seu id.
+
+**Endpoint:** `sua-url.vercel.app/user`
+
+**Tipo da Requisição:** `GET`
+
+### Excluir Documento
+
+**Descrição:** Exclui um documento, com base num id informado.
+
+**Endpoint:** `sua-url.vercel.app/user`
+
+**Tipo da Requisição:** `DELETE`
+
+### Atualizar Documento
+
+**Descrição:** Atualiza informações de um documento já existente no banco de dados.
+
+**Endpoint:** `sua-url.vercel.app/user`
+
+**Tipo da Requisição:** `PUT`
+
+**Body:**
+```json
+{
+  "nome": "Nome do usuário",
+  "senha": "***",
+  "email": "email-usuario@email.com"
+}
+```
+
 
