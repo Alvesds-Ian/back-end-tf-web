@@ -27,7 +27,7 @@ app.get("/membros", async (req, res) => {
   }
   });
 
-app.get("/membro/:email", async (req, res) => {
+app.get("/documento/:email", async (req, res) => {
     console.log("Rota GET /membro solicitada");
     try {
       const membro = await selectMembro(req.params.email);
@@ -48,7 +48,7 @@ app.post("/membro", async (req, res) => {
   }
 });
 
-app.delete("/membro/:email", async (req, res) => { 
+app.delete("/documento/:email", async (req, res) => { 
   console.log("Rota DELETE /membro solicitada");
   try {
     const membro = await selectMembro(req.params.email);
@@ -78,6 +78,69 @@ app.put("/membro", async (req, res) => { //updateMembro não tá funcionando
   }
 });
 
+/*
+Endpoints para a tabela Documento
+*/
+
+import { selectDocumentos, selectDocumento, insertDocumento, deleteDocumento, updateDocumento } from "./bd_doc.js";
+
+app.get("/documentos", async (req, res) => {
+  console.log("Rota GET/documentos solicitada");
+  try {
+    const documentos = await selectDocumentos();
+    res.json(documentos);
+  } catch (error) {
+    res.status(error.status || 500).json({ message: error.message || "Erro!" });
+  }
+  });
+
+app.get("/documento/:id", async (req, res) => {
+    console.log("Rota GET /documento solicitada");
+    try {
+      const documento = await selectDocumento(req.params.id);
+      if (documento.length > 0) res.json(documento);
+      else res.status(404).json({ message: "Documento não encontrado!" });
+    } catch (error) {
+      res.status(error.status || 500).json({ message: error.message || "Erro!" });
+    }
+});
+
+app.post("/documento", async (req, res) => {
+  console.log("Rota POST /documento solicitada");
+  try {
+    await insertDocumento(req.body);
+    res.status(201).json({ message: "Documento adicionado com sucesso!" });
+  } catch (error) {
+    res.status(error.status || 500).json({ message: error.message || "Erro!" });
+  }
+});
+
+app.delete("/documento/:id", async (req, res) => { 
+  console.log("Rota DELETE /documento solicitada");
+  try {
+    const documento = await selectDocumento(req.params.id);
+    if (documento.length > 0) {
+      await deleteDocumento(req.params.id);
+      res.status(200).json({ message: "Documento excluido com sucesso!!" });
+    } else res.status(404).json({ message: "Documento não encontrado!" });
+  } catch (error) {
+    res.status(error.status || 500).json({ message: error.message || "Erro!" });
+  }
+});
+
+app.put("/documento", async (req, res) => {
+  console.log("Rota PUT /documento solicitada");
+  try {
+    const documento = await selectDocumento(req.body.id);
+    if (documento.length > 0) {
+      await updateDocumento(req.body);
+      res.status(200).json({ message: "Documento atualizado com sucesso!" });
+    } else res.status(404).json({ message: "Documento não encontrado!" });
+  } catch (error) {
+    console.log(error);
+    res.status(error.status || 500).json({ message: error.message || "Erro!" });
+  }
+});
 
 app.listen(port, () => {
   // Um socket para "escutar" as requisições
