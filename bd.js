@@ -29,4 +29,19 @@ async function insertMembro(data) {
   await client.query(query, membro);
 }
 
-export { selectMembros, selectMembro, insertMembro };
+async function deleteMembro(email) {
+  const client = await connect();
+  const query = "DELETE FROM membro WHERE email = $1";
+  await client.query(query, [email]);
+}
+
+async function updateMembro(data, emailToUpdate) {
+  const client = await connect();
+  const query =
+    "UPDATE membro SET nome = $1, email = $2, senha = $3, cargo = $4, funcao = $5 WHERE email = $6";
+  const membro = [data.nome, data.email, data.senha, data.cargo, data.funcao, emailToUpdate];
+  await client.query(query, membro);
+}
+
+
+export { selectMembros, selectMembro, insertMembro, deleteMembro, updateMembro };
