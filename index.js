@@ -48,10 +48,10 @@ app.post("/membro", async (req, res) => {
   }
 });
 
-app.delete("/membro/:email", async (req, res) => {
+app.delete("/membro/:email", async (req, res) => { 
   console.log("Rota DELETE /membro solicitada");
   try {
-    const membro = await selectMembro(req.params.id);
+    const membro = await selectMembro(req.params.email);
     if (membro.length > 0) {
       await deleteMembro(req.params.email);
       res.status(200).json({ message: "Membro excluido com sucesso!!" });
@@ -61,7 +61,7 @@ app.delete("/membro/:email", async (req, res) => {
   }
 });
 
-app.put("/membro", async (req, res) => {
+app.put("/membro", async (req, res) => { //updateMembro não tá funcionando
   console.log("Rota PUT /membro solicitada");
   const newEmail = req.body.newEmail; // Adicione essa linha para obter o novo email do corpo da requisição
   try {
