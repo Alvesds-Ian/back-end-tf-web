@@ -50,12 +50,12 @@ router.delete("/documento/:id", async (req, res) => {
   }
 });
 
-router.put("/documento", async (req, res) => {
+router.put("/documento/:id", async (req, res) => {
   console.log("Rota PUT /documento solicitada");
   try {
-    const documento = await selectDocumento(req.body.id);
+    const documento = await selectDocumento(req.params.id);
     if (documento.length > 0) {
-      await updateDocumento(req.body);
+      await updateDocumento({ ...req.body, id: req.params.id });
       res.status(200).json({ message: "Documento atualizado com sucesso!" });
     } else res.status(404).json({ message: "Documento não encontrado!" });
   } catch (error) {
@@ -63,5 +63,6 @@ router.put("/documento", async (req, res) => {
     res.status(error.status || 500).json({ message: error.message || "Erro!" });
   }
 });
+
 
 export default router;
