@@ -18,16 +18,18 @@
 
 **Descrição:** Insere um novo membro do grêmio no banco de dados.
 
-**Endpoint:** `sua-url.vercel.app/user`
+**Endpoint:** `https://back-end-tf-web-lovat.vercel.app/membro`
 
 **Tipo da Requisição:** `POST`
 
 **Body:**
 ```json
 {
-  "nome": "Nome do usuário",
+  "nome": "Nome do membro",
   "senha": "***",
-  "email": "email-usuario@email.com"
+  "email": "email@email.com",
+  "cargo": "cargo do membro",
+  "funcao": "funcao"
 }
 ```
 
@@ -59,16 +61,18 @@
 
 **Descrição:** Atualiza informações de um membro do grêmio já existente no banco de dados.
 
-**Endpoint:** `sua-url.vercel.app/user`
+**Endpoint:** `https://back-end-tf-web-lovat.vercel.app/email`
 
 **Tipo da Requisição:** `PUT`
 
 **Body:**
 ```json
 {
-  "nome": "Nome do usuário",
+  "nome": "Nome do membro",
   "senha": "***",
-  "email": "email-usuario@email.com"
+  "email": "email@email.com",
+  "cargo": "cargo do membro",
+  "funcao": "funcao"
 }
 ```
 
@@ -78,16 +82,17 @@
 
 **Descrição:** Insere um novo documento no banco de dados.
 
-**Endpoint:** `sua-url.vercel.app/user`
+**Endpoint:** `https://back-end-tf-web-lovat.vercel.app/documento`
 
 **Tipo da Requisição:** `POST`
 
 **Body:**
 ```json
 {
-  "nome": "Nome do usuário",
-  "senha": "***",
-  "email": "email-usuario@email.com"
+  "id": 1,
+  "titulo": "Titulo do documento",
+  "conteudo": "conteudo do documento",
+  "datadoc": "YYYY-MM-DD"
 }
 ```
 
@@ -119,16 +124,17 @@
 
 **Descrição:** Atualiza informações de um documento já existente no banco de dados.
 
-**Endpoint:** `https://back-end-tf-web-lovat.vercel.app/`
+**Endpoint:** `https://back-end-tf-web-lovat.vercel.app/documento`
 
 **Tipo da Requisição:** `PUT`
 
 **Body:**
 ```json
 {
-  "nome": "Nome do usuário",
-  "senha": "***",
-  "email": "email-usuario@email.com"
+  "id": 1,
+  "titulo": "Titulo do documento",
+  "conteudo": "conteudo do documento",
+  "datadoc": "YYYY-MM-DD"
 }
 ```
 
