@@ -71,7 +71,7 @@ async function insertDocumento(data) {
 async function deleteDocumento(id) { //selectDocumento e deleteDocumento não funcionam (Membro não encontrado)
   const client = await connect();
   const query = "DELETE FROM documento WHERE id = $1";
-  await client.query(query, id);
+  await client.query(query, [id]);
 }
 
 async function updateDocumento(data) {
