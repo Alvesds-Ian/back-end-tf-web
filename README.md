@@ -35,7 +35,7 @@
 
 **Descrição:** Lista todos os membros do grêmio presentes no banco de dados.
 
-**Endpoint:** `sua-url.vercel.app/user`
+**Endpoint:** `https://back-end-tf-web-lovat.vercel.app/membros`
 
 **Tipo da Requisição:** `GET`
 
@@ -43,7 +43,7 @@
 
 **Descrição:** Lista um membro do grêmio específico com base num email informado.
 
-**Endpoint:** `sua-url.vercel.app/user`
+**Endpoint:** `https://back-end-tf-web-lovat.vercel.app/membro/email`
 
 **Tipo da Requisição:** `GET`
 
@@ -51,7 +51,7 @@
 
 **Descrição:** Exclui um membro do grêmio do banco de dados, com base num email informado.
 
-**Endpoint:** `sua-url.vercel.app/user`
+**Endpoint:** `https://back-end-tf-web-lovat.vercel.app/membro/email`
 
 **Tipo da Requisição:** `DELETE`
 
@@ -95,7 +95,7 @@
 
 **Descrição:** Lista todos os documentos presentes no banco de dados.
 
-**Endpoint:** `sua-url.vercel.app/user`
+**Endpoint:** `https://back-end-tf-web-lovat.vercel.app/documentos`
 
 **Tipo da Requisição:** `GET`
 
@@ -103,7 +103,7 @@
 
 **Descrição:** Lista um documento específico com base em seu id.
 
-**Endpoint:** `sua-url.vercel.app/user`
+**Endpoint:** `https://back-end-tf-web-lovat.vercel.app/documento/id`
 
 **Tipo da Requisição:** `GET`
 
@@ -111,7 +111,7 @@
 
 **Descrição:** Exclui um documento, com base num id informado.
 
-**Endpoint:** `sua-url.vercel.app/user`
+**Endpoint:** `https://back-end-tf-web-lovat.vercel.app/documento/id`
 
 **Tipo da Requisição:** `DELETE`
 
@@ -119,7 +119,7 @@
 
 **Descrição:** Atualiza informações de um documento já existente no banco de dados.
 
-**Endpoint:** `sua-url.vercel.app/user`
+**Endpoint:** `https://back-end-tf-web-lovat.vercel.app/`
 
 **Tipo da Requisição:** `PUT`
 
