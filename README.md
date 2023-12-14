@@ -1,4 +1,4 @@
-# back-end-teste
+# Modeolo de Back-end do Site do Grêmio Estudantil
 # Autores
 - Cristian Afonso 
 - Eurico Santiago Climaco Rodrigues 
