@@ -17,10 +17,10 @@ router.get("/membros", async (req, res) => {
     }
 });
 
-router.get("/membro/:email", async (req, res) => {
+router.get("/membro/:id", async (req, res) => {
     console.log("Rota GET /membro solicitada");
     try {
-      const membro = await selectMembro(req.params.email);
+      const membro = await selectMembro(req.params.id);
       if (membro.length > 0) res.json(membro);
       else res.status(404).json({ message: "Membro não encontrado!" });
     } catch (error) {
@@ -38,12 +38,12 @@ router.post("/membro", async (req, res) => {
   }
 });
 
-router.delete("/membro/:email", async (req, res) => {
+router.delete("/membro/:id", async (req, res) => {
   console.log("Rota DELETE /membro solicitada");
   try {
-    const membro = await selectMembro(req.params.email);
+    const membro = await selectMembro(req.params.id);
     if (membro.length > 0) {
-      await deleteMembro(req.params.email);
+      await deleteMembro(req.params.id);
       res.status(200).json({ message: "Membro excluído com sucesso!" });
     } else res.status(404).json({ message: "Membro não encontrado!" });
   } catch (error) {
@@ -53,11 +53,11 @@ router.delete("/membro/:email", async (req, res) => {
 
 router.put("/membro", async (req, res) => {
   console.log("Rota PUT /membro solicitada");
-  const newEmail = req.body.newEmail;
+  const newid = req.body.newid;
   try {
-    const membro = await selectMembro(req.body.email);
+    const membro = await selectMembro(req.body.id);
     if (membro.length > 0) {
-      await updateMembro(req.body, newEmail);
+      await updateMembro(req.body, newid);
       res.status(200).json({ message: "Membro atualizado com sucesso!" });
     } else {
       res.status(404).json({ message: "Membro não encontrado!" });

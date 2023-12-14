@@ -14,32 +14,32 @@ async function selectMembros() {
   return res.rows;
 }
 
-async function selectMembro(email) {
+async function selectMembro(id) {
     const client = await connect();
-    const query = "SELECT * FROM membro WHERE email = $1";
-    const membro = [email];
+    const query = "SELECT * FROM membro WHERE id = $1";
+    const membro = [id];
     const res = await client.query(query, membro);
     return res.rows;
   }
 
 async function insertMembro(data) {
   const client = await connect();
-  const query = "INSERT INTO membro (nome,senha,email,cargo,funcao) VALUES ($1,$2,$3,$4,$5) ";
-  const membro = [data.nome, data.senha, data.email, data.cargo, data.funcao];
+  const query = "INSERT INTO membro (nome,senha,email,cargo,funcao,imagem) VALUES ($1,$2,$3,$4,$5,$6)";
+  const membro = [data.nome, data.senha, data.email, data.cargo, data.funcao, data.imagem];
   await client.query(query, membro);
 }
 
-async function deleteMembro(email) { 
+async function deleteMembro(id) { 
   const client = await connect();
-  const query = "DELETE FROM membro WHERE email = $1";
-  await client.query(query, [email]);
+  const query = "DELETE FROM membro WHERE id = $1";
+  await client.query(query, [id]);
 }
 
-async function updateMembro(data, emailToUpdate) { //updateMembro não tá funcionando
+async function updateMembro(data) {
   const client = await connect();
   const query =
-    "UPDATE membro SET nome = $1, email = $2, senha = $3, cargo = $4, funcao = $5 WHERE email = $6";
-  const membro = [data.nome, data.email, data.senha, data.cargo, data.funcao, emailToUpdate];
+    "UPDATE membro SET nome = $1, email = $2, senha = $3, cargo=$4, funcao=$5, imagem=$6 WHERE id = $7";
+  const membro = [data.nome, data.email, data.senha, data.cargo, data.funcao, data.imagem, data.id];
   await client.query(query, membro);
 }
 
@@ -63,8 +63,8 @@ async function selectDocumento(id) { //selectDocumento e deleteDocumento não fu
 
 async function insertDocumento(data) {
   const client = await connect();
-  const query = "INSERT INTO documento (titulo,conteudo,datadoc) VALUES ($1,$2,$3) ";
-  const documento = [data.titulo, data.conteudo, data.datadoc];
+  const query = "INSERT INTO documento (titulo,endereco,descricao,datadoc) VALUES ($1,$2,$3,$4) ";
+  const documento = [data.titulo, data.endereco, data.descricao, data.datadoc];
   await client.query(query,documento);
 }
 
@@ -77,8 +77,8 @@ async function deleteDocumento(id) { //selectDocumento e deleteDocumento não fu
 async function updateDocumento(data) {
   const client = await connect();
   const query =
-    "UPDATE documento SET titulo = $1, conteudo = $2, datadoc = $3 WHERE id = $4";
-  const documento = [data.titulo, data.conteudo, data.datadoc, data.id];
+    "UPDATE documento SET titulo = $1, endereco = $2, descricao=3, datadoc = $4 WHERE id = $4";
+  const documento = [data.titulo, data.endereco, data.descricao, data.datadoc, data.id];
   await client.query(query,documento);
 }
 
