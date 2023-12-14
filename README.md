@@ -1,4 +1,4 @@
-# Modeolo de Back-end do Site do Grêmio Estudantil
+# Modelo de Back-end do Site do Grêmio Estudantil
 # Autores
 - Cristian Afonso 
 - Eurico Santiago Climaco Rodrigues 
