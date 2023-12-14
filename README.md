@@ -8,7 +8,7 @@
 - Samuel Juneo 
 
 # Modelo Conceitual
-<img src="/bd/Gremio-BD.png">
+<img src="/bd/CONCEITUAL.png">
 
 # Documentação dos Endpoints do Projeto
 
