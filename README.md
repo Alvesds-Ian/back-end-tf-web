@@ -1,14 +1,23 @@
-# Modelo de Back-end do Site do Grêmio Estudantil
+# Modelo de back-end do Site do Grêmio Estudantil
+Respositório contendo modelagem do Banco de Dados e documentação dos endpoints do site.
 # Autores
-- Cristian Afonso 
+- Cristian Afonso Dias 
 - Eurico Santiago Climaco Rodrigues 
-- Ian Alves 
-- Pedro Gabriel
-- Pedro Henrique 
-- Samuel Juneo 
+- Ian Alves de Souza
+- Pedro Gabriel Rodrigues Amaral
+- Pedro Henrique Mendes de Castro
+- Samuel Júneo de Andrade Costa
 
-# Modelo Conceitual
-<img src="/bd/CONCEITUAL.png">
+# Modelagem do BD
+
+<a href='img src="/bd/CONCEITUAL.png'>Modelo Conceitual</a>
+
+<a href='img src="/bd/logico.png'>Modelo Lógico</a>
+
+<a href='/bd/DDL.sql'>Modelo Físico</a>
+
+# Ferramentas Utilizadas na Disponibilização do BD
+O Banco de Dados foi criado e disponibilizado para a API utilizando a plataforma <a href='https://neon.tech/'>Neon Tech</a> 
 
 # Documentação dos Endpoints do Projeto
 
@@ -29,7 +38,8 @@
   "senha": "***",
   "email": "email@email.com",
   "cargo": "cargo do membro",
-  "funcao": "funcao"
+  "funcao": "funcao",
+  "imagem": "foto.png"
 }
 ```
 
@@ -43,17 +53,17 @@
 
 ### Listar um único membro
 
-**Descrição:** Lista um membro do grêmio específico com base num email informado.
+**Descrição:** Lista um membro do grêmio específico com base num id informado.
 
-**Endpoint:** `https://back-end-tf-web-lovat.vercel.app/membro/email`
+**Endpoint:** `https://back-end-tf-web-lovat.vercel.app/membro/id`
 
 **Tipo da Requisição:** `GET`
 
 ### Excluir Membro
 
-**Descrição:** Exclui um membro do grêmio do banco de dados, com base num email informado.
+**Descrição:** Exclui um membro do grêmio do banco de dados, com base num id informado.
 
-**Endpoint:** `https://back-end-tf-web-lovat.vercel.app/membro/email`
+**Endpoint:** `https://back-end-tf-web-lovat.vercel.app/membro/id`
 
 **Tipo da Requisição:** `DELETE`
 
@@ -61,18 +71,20 @@
 
 **Descrição:** Atualiza informações de um membro do grêmio já existente no banco de dados.
 
-**Endpoint:** `https://back-end-tf-web-lovat.vercel.app/email`
+**Endpoint:** `https://back-end-tf-web-lovat.vercel.app/id`
 
 **Tipo da Requisição:** `PUT`
 
 **Body:**
 ```json
 {
+  "id": "1",
   "nome": "Nome do membro",
   "senha": "***",
   "email": "email@email.com",
   "cargo": "cargo do membro",
-  "funcao": "funcao"
+  "funcao": "funcao",
+  "imagem": "foto.png"
 }
 ```
 
@@ -89,9 +101,9 @@
 **Body:**
 ```json
 {
-  "id": 1,
   "titulo": "Titulo do documento",
-  "conteudo": "conteudo do documento",
+  "descricao": "descrição do documento",
+  "endereco": "link do documento",
   "datadoc": "YYYY-MM-DD"
 }
 ```
@@ -133,7 +145,8 @@
 {
   "id": 1,
   "titulo": "Titulo do documento",
-  "conteudo": "conteudo do documento",
+  "descricao": "descrição do documento",
+  "endereco": "link do documento",
   "datadoc": "YYYY-MM-DD"
 }
 ```
