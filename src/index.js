@@ -6,9 +6,11 @@ import membroRouter from "./membro.js";
 dotenv.config();
 
 const app = express();
-const port = 3000;
+const port = 5000;
 
 app.use(express.json());
+app.use(membroRouter);
+app.use(documentoRouter);
 
 app.get("/", (req, res) => {
   console.log("Rota / solicitada");
@@ -21,10 +23,5 @@ app.listen(port, () => {
   console.log(`Serviço escutando na porta:  ${port}`);
 });
 
-// Rotas para membros
-app.use("/membros", membroRouter);
-
-// Rotas para documentos
-app.use("/documentos", documentoRouter);
 
 
