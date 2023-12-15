@@ -47,7 +47,7 @@ async function updateMembro(data) {
 Funções para a tabela Documento
 */
 
-async function selectDocumentos() {
+async function selectDocumentos(id) {
   const client = await connect();
   const res = await client.query("SELECT * FROM documento");
   return res.rows;
@@ -56,7 +56,7 @@ async function selectDocumentos() {
 async function selectDocumento(id) { //selectDocumento e deleteDocumento não funcionam (Membro não encontrado)
     const client = await connect();
     const query = "SELECT * FROM documento WHERE id = $1";
-    const documento = id;
+    const documento = [id];
     const res = await client.query(query, documento);
     return res.rows;
   }
@@ -77,7 +77,7 @@ async function deleteDocumento(id) { //selectDocumento e deleteDocumento não fu
 async function updateDocumento(data) {
   const client = await connect();
   const query =
-    "UPDATE documento SET titulo = $1, endereco = $2, descricao=3, datadoc = $4 WHERE id = $4";
+    "UPDATE documento SET titulo = $1, endereco = $2, descricao=$3, datadoc = $4 WHERE id = $4";
   const documento = [data.titulo, data.endereco, data.descricao, data.datadoc, data.id];
   await client.query(query,documento);
 }

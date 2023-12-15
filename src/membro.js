@@ -1,10 +1,5 @@
-/*
-Endpoints para a tabela Membro
-*/
 import { Router } from "express";
-
 import { selectMembro, selectMembros, insertMembro, deleteMembro, updateMembro } from "../bd/bd.js";
-
 const router = Router();
 
 router.get("/membros", async (req, res) => {
