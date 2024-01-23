@@ -2,6 +2,7 @@ import dotenv from "dotenv";
 import express from "express";
 import documentoRouter from "./documento.js";
 import membroRouter from "./membro.js";
+import roteadorLogin from "./login.js";
 
 dotenv.config();
 
@@ -11,6 +12,7 @@ const port = 5000;
 app.use(express.json());
 app.use(membroRouter);
 app.use(documentoRouter);
+app.use(roteadorLogin);
 
 app.get("/", (req, res) => {
   console.log("Rota / solicitada");

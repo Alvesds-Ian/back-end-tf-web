@@ -8,6 +8,14 @@ async function connect() {
   return pool.connect();
 }
 
+async function autenticarMembro(email, senha) {
+  const client = await connect();
+  const query = "SELECT * FROM membro WHERE email = $1 AND senha = $2";
+  const membro = [email, senha];
+  const res = await client.query(query, membro);
+  return res.rows[0];
+}
+
 async function selectMembros() {
   const client = await connect();
   const res = await client.query("SELECT * FROM membro");
@@ -83,4 +91,4 @@ async function updateDocumento(data) {
 }
 
 
-export { selectMembros, selectMembro, insertMembro, deleteMembro, updateMembro, selectDocumento, selectDocumentos, insertDocumento, deleteDocumento, updateDocumento };
+export { autenticarMembro, selectMembros, selectMembro, insertMembro, deleteMembro, updateMembro, selectDocumento, selectDocumentos, insertDocumento, deleteDocumento, updateDocumento };
