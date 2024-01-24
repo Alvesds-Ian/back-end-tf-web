@@ -150,5 +150,69 @@ O Banco de Dados foi criado e disponibilizado para a API utilizando a plataforma
   "datadoc": "YYYY-MM-DD"
 }
 ```
+**[GET] /membro**
 
+Descrição: Retorna todos os membros.
+
+Observações: É necessário token de acesso via header (x-access-token)
+
+**[GET] /membro/{id}**
+
+Descrição: Retorna um único membro.
+
+Observações: É necessário token de acesso via header (x-access-token)
+
+**[POST] /membro**
+
+Descrição: Cadastra um membro.
+
+Body:
+```json
+{
+  "nome": "Nome do membro",
+  "senha": "***",
+  "email": "email@email.com",
+  "cargo": "cargo do membro",
+  "funcao": "funcao",
+  "imagem": "foto.png"
+}
+```
+
+**[PUT] /membro/{id}**
+
+Descrição: Atualiza dados de um membro.
+
+Observações: É necessário token de acesso via header (x-access-token)
+
+Body:
+```json
+{
+  "id": "1",
+  "nome": "Nome do membro",
+  "senha": "***",
+  "email": "email@email.com",
+  "cargo": "cargo do membro",
+  "funcao": "funcao",
+  "imagem": "foto.png"
+}
+```
+**[DELETE] /membro/{id}**
+
+Descrição: Exclui um único membro.
+
+Observações: É necessário token de acesso via header (x-access-token)
+
+**[POST] /login**
+
+Descrição: Autentica usuário e gera token de acesso.
+
+Observações: É necessário que o usuário esteja cadastrado.
+
+Body:
+```json
+{
+  "senha": "***",
+  "email": "email@email.com"
+}
+```
 
