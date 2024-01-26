@@ -25,5 +25,7 @@ app.listen(port, () => {
   console.log(`Serviço escutando na porta:  ${port}`);
 });
 
+app.use(express.urlencoded({ extended: true }));
+
 
 
